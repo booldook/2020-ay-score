@@ -5,7 +5,8 @@
 
 
 /* Main */
-
+.main-wrap input[name="stdname"] {width: 150px;}
+.main-wrap input[type="number"] {width: 100px;}
 
 /* Footer */
 

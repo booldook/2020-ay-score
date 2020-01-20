@@ -18,9 +18,56 @@
 </head>
 <body>
 	<!-- Header -->
-	<header class="header"></header>
+	<header class="header container">
+		<div class="jumbotron">
+			<h1>
+				성적관리프로그램
+				<small class="ml-3">API연동</small>
+			</h1>
+		</div>
+	</header>
 	<!-- Main -->
-	<main class="main-wrap"></main>
+	<main class="main-wrap container">
+		<div class="p-3 border border-primary">
+			<form action="//webmir.co.kr/score/php/score_in.php" method="post" name="scoreForm" class="form-inline">
+				<input type="hidden" name="user" value="booldook">
+				<input type="text" name="stdname" class="form-control mr-2" placeholder="이름">
+				<input type="number" name="kor" class="form-control mr-2" placeholder="국어">
+				<input type="number" name="eng" class="form-control mr-2" placeholder="영어">
+				<input type="number" name="math" class="form-control mr-2" placeholder="수학">
+				<button class="btn btn-primary">저장</button>
+			</form>
+		</div>
+		<table class="score-tb table table-bordered my-3 text-center">
+			<thead class="thead-dark">
+				<tr>
+					<th>번호</th>
+					<th>이름</th>
+					<th>국어</th>
+					<th>영어</th>
+					<th>수학</th>
+					<th>총점</th>
+					<th>평균</th>
+					<th>관리</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>홍길동</td>
+					<td>80</td>
+					<td>70</td>
+					<td>75</td>
+					<td>235</td>
+					<td>75</td>
+					<td>
+						<button class="btn btn-primary btn-sm">수정</button>
+						<button class="btn btn-danger btn-sm">삭제</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</main>
 	<!--  -->
 	<!-- Footer -->
 	<footer class="footer"></footer>
