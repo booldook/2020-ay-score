@@ -11,18 +11,25 @@ function init() {
 
 function getScore(res) {
 	console.log(res);
-	var html = '';
+	var html = '', id, stdname, kor, eng, math, total, avg;
 	for(var i in res.student) {
+		id = res.student[i].id;
+		stdname = res.student[i].stdname;
+		kor = Number(res.student[i].kor);
+		eng = Number(res.student[i].eng);
+		math = Number(res.student[i].math);
+		total = kor + eng + math;
+		avg = (total/3).toFixed(2);
 		html += '<tr>';
-		html += '<td>'+res.student[i].id+'</td>';
-		html += '<td>'+res.student[i].stdname+'</td>';
-		html += '<td>'+res.student[i].kor+'</td>';
-		html += '<td>'+res.student[i].eng+'</td>';
-		html += '<td>'+res.student[i].math+'</td>';
-		html += '<td>235</td>';
-		html += '<td>75</td>';
+		html += '<td>'+id+'</td>';
+		html += '<td>'+stdname+'</td>';
+		html += '<td>'+kor+'</td>';
+		html += '<td>'+eng+'</td>';
+		html += '<td>'+math+'</td>';
+		html += '<td>'+total+'</td>';
+		html += '<td>'+avg+'</td>';
 		html += '<td>';
-		html += '<button class="btn btn-primary btn-sm">수정</button>';
+		html += '<button class="btn btn-primary btn-sm">수정</button> ';
 		html += '<button class="btn btn-danger btn-sm">삭제</button>';
 		html += '</td>';
 		html += '</tr>';
