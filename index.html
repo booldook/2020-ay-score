@@ -29,13 +29,13 @@
 	<!-- Main -->
 	<main class="main-wrap container">
 		<div class="p-3 border border-primary">
-			<form action="//webmir.co.kr/score/php/score_in.php" method="post" name="scoreForm" class="form-inline">
+			<form name="scoreForm" class="form-inline">
 				<input type="hidden" name="user" value="booldook">
 				<input type="text" name="stdname" class="form-control mr-2" placeholder="이름">
 				<input type="number" name="kor" class="form-control mr-2" placeholder="국어">
 				<input type="number" name="eng" class="form-control mr-2" placeholder="영어">
 				<input type="number" name="math" class="form-control mr-2" placeholder="수학">
-				<button class="btn btn-primary">저장</button>
+				<button type="button" class="btn btn-primary" id="btSave">저장</button>
 			</form>
 		</div>
 		<table class="score-tb table table-bordered my-3 text-center">
