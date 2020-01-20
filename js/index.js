@@ -11,6 +11,23 @@ function init() {
 
 function getScore(res) {
 	console.log(res);
+	var html = '';
+	for(var i in res.student) {
+		html += '<tr>';
+		html += '<td>'+res.student[i].id+'</td>';
+		html += '<td>'+res.student[i].stdname+'</td>';
+		html += '<td>'+res.student[i].kor+'</td>';
+		html += '<td>'+res.student[i].eng+'</td>';
+		html += '<td>'+res.student[i].math+'</td>';
+		html += '<td>235</td>';
+		html += '<td>75</td>';
+		html += '<td>';
+		html += '<button class="btn btn-primary btn-sm">수정</button>';
+		html += '<button class="btn btn-danger btn-sm">삭제</button>';
+		html += '</td>';
+		html += '</tr>';
+	}
+	$(".score-tb").find("tbody").html(html);
 }
 
 function postScore(res) {
