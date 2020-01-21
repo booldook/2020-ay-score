@@ -107,8 +107,8 @@ function getScore(res) {
 		html += '<td>'+total+'</td>';
 		html += '<td>'+avg+'</td>';
 		html += '<td>';
-		html += '<button class="btn btn-primary">수정</button> ';
-		html += '<button class="btn btn-danger">삭제</button> ';
+		html += '<button class="btn btn-sm btn-primary" onclick="chg('+id+');">수정</button> ';
+		html += '<button class="btn btn-sm btn-danger" onclick="del('+id+');">삭제</button> ';
 		html += '</td>';
 		html += '</tr>';
 	}
@@ -117,6 +117,28 @@ function getScore(res) {
 
 function err(xhr) {
 	console.log(xhr);
+}
+
+function del(id) {
+	if(confirm("정말로 삭제하시겠습니까?")) {
+		$.ajax({
+			url: "http://webmir.co.kr/score/php/score_del.php",
+			type: "post",
+			dataType: "json",
+			data: {
+				id: id
+			},
+			error: err,
+			success: function(res) {
+				if(res.code == 200) init();
+				else alert("삭제에 실패하였습니다. 관리자에게 문의하세요.");
+			}
+		});
+	}
+}
+
+function chg(id) {
+	console.log(id);
 }
 
 init();
