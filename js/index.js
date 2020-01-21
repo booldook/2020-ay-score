@@ -74,6 +74,9 @@ $("#btSave").click(function() {
 
 
 function init() {
+	$("#btChg").hide();
+	$("#btReset").hide();
+	$("#btSave").show();
 	$("form[name='scoreForm']").find("input").each(function(i) {
 		if(i>0) $(this).val(""); // f.input.value = ""
 	});
@@ -138,7 +141,9 @@ function del(id) {
 }
 
 function chg(id) {
-	console.log(id);
+	$("#btSave").hide();
+	$("#btChg").show();
+	$("#btReset").show();
 }
 
 init();
