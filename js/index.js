@@ -32,8 +32,9 @@ if(Number(f.math.value) > 100 || Number(f.math.value) < 0) {
 */
 
 
-$("#btSave").click(function() {
+$("#btSave, #btChg").click(function() {
 	var f = document.scoreForm;
+	var id = f.id.value;
 	var user = f.user.value.trim();
 	var stdname = f.stdname.value.trim();
 	var score = [];
@@ -53,17 +54,26 @@ $("#btSave").click(function() {
 			return false;
 		}
 	}
+
+	var url = "http://webmir.co.kr/score/php/score_in.php";
+	var data = { 
+		user: user, 
+		stdname: stdname,
+		kor: score[0], 
+		eng: score[1], 
+		math: score[2]
+	};
+
+	if($(this).attr("id") == "btChg") {
+		url = "http://webmir.co.kr/score/php/score_up.php";
+		data.id = id;
+	}
+
 	$.ajax({
-		url: "http://webmir.co.kr/score/php/score_in.php",
+		url: url,
 		type: "post",
 		dataType: "json",
-		data: { 
-			user: user, 
-			stdname: stdname,
-			kor: score[0], 
-			eng: score[1], 
-			math: score[2]
-		},
+		data: data,
 		success: function(res){
 			if(res.code == 200) init();
 			else alert("저장에 실패하였습니다. 관리자에게 문의하세요.");
@@ -118,6 +128,16 @@ function getScore(res) {
 	$(".score-tb").find("tbody").html(html);
 }
 
+function getData(res) {
+	console.log(res);
+	var f = document.scoreForm;
+	f.id.value = res.id;
+	f.stdname.value = res.stdname;
+	f.kor.value = res.kor;
+	f.eng.value = res.eng;
+	f.math.value = res.math;
+}
+
 function err(xhr) {
 	console.log(xhr);
 }
@@ -144,6 +164,16 @@ function chg(id) {
 	$("#btSave").hide();
 	$("#btChg").show();
 	$("#btReset").show();
+	$.ajax({
+		url: "http://webmir.co.kr/score/php/score_li.php",
+		type: "get",
+		dataType: "json",
+		data: {
+			id: id
+		},
+		success: getData,
+		srror: err
+	});
 }
 
 init();
